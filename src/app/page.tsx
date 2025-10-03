@@ -1,17 +1,57 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // 로컬 스토리지에서 다크모드 설정 불러오기
+    const savedMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedMode);
+    if (savedMode) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem('darkMode', String(newMode));
+    
+    if (newMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* 다크모드 토글 버튼 */}
+      <button
+        onClick={toggleDarkMode}
+        className="fixed top-6 right-6 z-50 p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow-lg hover:scale-110 transition-transform duration-200"
+        aria-label="다크모드 토글"
+      >
+        {darkMode ? (
+          <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+        ) : (
+          <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        )}
+      </button>
+
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900">
-        <Image
+      <section className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+        <img
           src="/profile.png"
           alt="박주영 프로필 사진"
-          width={200}
-          height={200}
-          className="rounded-full shadow-xl mb-8"
-          priority
+          className="w-48 h-48 rounded-full shadow-xl mb-8 object-cover"
         />
         <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
           박주영
@@ -25,16 +65,10 @@ export default function Home() {
         </p>
         <div className="flex gap-4">
           <a
-            href="mailto:juyeong.park.tech@gmail.com"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            Contact Me
-          </a>
-          <a
             href="https://github.com/juyeong-repo"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
           >
             GitHub
           </a>
@@ -42,7 +76,7 @@ export default function Home() {
             href="https://juyeongpark.tistory.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
           >
             Blog
           </a>
@@ -50,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* About Me Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900">
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             About Me
@@ -76,7 +110,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Contact
@@ -122,7 +156,7 @@ export default function Home() {
       </section>
 
       {/* Work Experience Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900">
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Work Experience
@@ -188,7 +222,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Projects
@@ -196,7 +230,7 @@ export default function Home() {
           
           <div className="space-y-8">
             {/* Show Me the Movie */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors duration-300">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Show Me the Movie
@@ -229,7 +263,7 @@ export default function Home() {
             </div>
 
             {/* 블로그 프로젝트 */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors duration-300">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   YeongLog
@@ -262,7 +296,7 @@ export default function Home() {
             </div>
 
             {/* SNS 프로젝트 */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors duration-300">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Photogram
@@ -297,7 +331,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900">
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Education
@@ -320,7 +354,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-8 bg-gray-50 dark:bg-gray-800 text-center">
+      <footer className="py-8 px-8 bg-gray-50 dark:bg-gray-800 text-center transition-colors duration-300">
         <p className="text-gray-600 dark:text-gray-400">
           © 2025 Juyeong Park. All rights reserved.
         </p>
