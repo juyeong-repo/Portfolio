@@ -4,15 +4,36 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 로컬 스토리지에서 다크모드 설정 불러오기
+    // 다크모드 설정 불러오기
     const savedMode = localStorage.getItem('darkMode') === 'true';
     setDarkMode(savedMode);
     if (savedMode) {
       document.documentElement.classList.add('dark');
     }
+
+    // 블로그 RSS 피드 가져오기
+    fetchBlogPosts();
   }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://juyeongpark.tistory.com/rss');
+      const data = await response.json();
+      
+      if (data.status === 'ok') {
+        // 최신 글 5개만 가져오기
+        setBlogPosts(data.items.slice(0, 5));
+      }
+    } catch (error) {
+      console.error('블로그 글을 불러오는데 실패했습니다:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
@@ -125,7 +146,131 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Recent Blog Posts Section - Hero 바로 아래로 이동 */}
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Recent Blog Posts
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              기술 블로그 <span className="text-blue-600 dark:text-blue-400 font-bold">120+ 글</span> 작성 | 꾸준한 학습과 공유
+            </p>
+          </div>
+          
+          {loading ? (
+            <div className="text-center text-gray-600 dark:text-gray-400 py-8">
+              블로그 글을 불러오는 중...
+            </div>
+          ) : blogPosts.length > 0 ? (
+            <div className="space-y-6">
+              {/* 최신글 하이라이트 */}
+              <a
+                href={blogPosts[0].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-200 dark:border-blue-900 group"
+              >
+                <div className="flex items-start gap-2 mb-3">
+                  <span className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+                    최신글
+                  </span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {new Date(blogPosts[0].pubDate).toLocaleDateString('ko-KR', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {blogPosts[0].title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
+                  {blogPosts[0].description?.replace(/<[^>]*>/g, '').substring(0, 200)}...
+                </p>
+              </a>
+
+              {/* 최근 글 목록 */}
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
+                  </svg>
+                  최근 작성 글
+                </h4>
+                <div className="space-y-3">
+                  {blogPosts.slice(1, 5).map((post, index) => (
+                    <a
+                      key={index}
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-4 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors group"
+                    >
+                      <span className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full flex items-center justify-center font-semibold text-sm">
+                        {index + 2}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                          {post.title}
+                        </h5>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                          {new Date(post.pubDate).toLocaleDateString('ko-KR')}
+                        </p>
+                      </div>
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+                <a
+                  href="https://juyeongpark.tistory.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 block text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+                >
+                  블로그에서 더 많은 글 보기 →
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center text-gray-600 dark:text-gray-400 py-8">
+              블로그 글을 불러올 수 없습니다.
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* About Me Section */}
+      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+            About Me
+          </h2>
+          <div className="text-lg text-gray-700 dark:text-gray-300 space-y-4">
+            <p className="font-semibold text-xl text-blue-600 dark:text-blue-400">
+              "코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다."
+            </p>
+            <p>
+              Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
+              PG 및 재정산 시스템을 설계부터 운영까지 전 과정에 걸�쳐 주도적으로 참여해왔습니다.
+            </p>
+            <p>
+              서비스의 구조적 안정성과 속도를 개선하기 위해 실행 계획 분석, 인덱스 최적화, 쿼리 리팩토링 등
+              다양한 방식으로 성능을 지속적으로 개선해왔으며, 실제로 수차례 눈에 띄는 성능 향상을 이끌어냈습니다.
+            </p>
+            <p>
+              업무 외 시간에도 꾸준히 CS, 시스템 설계, 자바, JPA 등 다양한 주제로 스터디를 주도하거나 참여하고,
+              기술 블로그 120편 이상을 작성하며 기록하고 공유하는 습관을 이어가고 있습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
@@ -152,7 +297,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Contact
@@ -198,7 +343,7 @@ export default function Home() {
       </section>
 
       {/* Work Experience Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Work Experience
@@ -264,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Projects
@@ -373,7 +518,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Education
@@ -396,7 +541,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-8 bg-gray-50 dark:bg-gray-800 text-center transition-colors duration-300">
+      <footer className="py-8 px-8 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
         <p className="text-gray-600 dark:text-gray-400">
           © 2025 Juyeong Park. All rights reserved.
         </p>
