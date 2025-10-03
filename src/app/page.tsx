@@ -47,39 +47,81 @@ export default function Home() {
       </button>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen p-8 bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
-        <img
-          src="/profile.png"
-          alt="박주영 프로필 사진"
-          className="w-48 h-48 rounded-full shadow-xl mb-8 object-cover"
-        />
-        <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          박주영
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-          Full Stack Developer
-        </p>
-        <p className="text-center text-gray-700 dark:text-gray-300 max-w-2xl mb-8">
-          사용자의 편리함과 읽기 쉬운 코드를 지향하는 개발자입니다.<br />
-          팀에 잘 녹아들고 유지보수 가능한 코드를 작성하는 것을 최우선의 가치로 여깁니다.
-        </p>
-        <div className="flex gap-4">
-          <a
-            href="https://github.com/juyeong-repo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://juyeongpark.tistory.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
-          >
-            Blog
-          </a>
+      <section className="flex items-center justify-center min-h-screen p-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+        <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* 왼쪽: 프로필 */}
+          <div className="flex flex-col items-center">
+            <img
+              src="/profile.png"
+              alt="박주영 프로필 사진"
+              className="w-48 h-48 rounded-full shadow-xl mb-8 object-cover"
+            />
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              박주영
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+              Full Stack Developer
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/juyeong-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://juyeongpark.tistory.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
+              >
+                Blog
+              </a>
+            </div>
+          </div>
+
+          {/* 오른쪽: 자기소개 요약 */}
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              About Me
+            </h2>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300">
+              <p className="leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자</strong>입니다. 
+                팀의 목표를 우선하며, 동료들과 적극적으로 소통하고 협업합니다.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">클린 코드</strong>를 추구합니다. 
+                6개월 후에도 이해하기 쉽고, 확장 가능한 구조를 설계합니다.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">성능 최적화</strong>에 진심입니다. 
+                쿼리 개선으로 응답속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화 등 
+                실질적인 개선 경험이 있습니다.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-gray-900 dark:text-white">설계부터 운영까지</strong> 책임집니다. 
+                PG 시스템 전체 생명주기를 경험하며, 안정적인 서비스 운영 역량을 갖췄습니다.
+              </p>
+            </div>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
+              <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">
+                TECH STACK
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Java</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Spring Boot</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">TypeScript</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">React</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Next.js</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">NestJS</span>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">MySQL</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
