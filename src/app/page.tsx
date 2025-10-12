@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface BlogPost {
   title: string;
@@ -82,15 +83,17 @@ export default function Home() {
         <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* 왼쪽: 프로필 */}
           <div className="flex flex-col items-center">
-            <img
-              src="/profile.png"
-              alt="박주영 프로필 사진"
-              className="w-48 h-48 rounded-full shadow-xl mb-8 object-cover"
-            />
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              박주영
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          <Image 
+            src="/profile.png" 
+            alt="프로필"
+            width={200}
+            height={200}
+            className="w-48 h-48 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-6"
+          />
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            박주영
+          </h1>
+                      <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Full Stack Developer
             </p>
             <div className="flex gap-4">
@@ -262,7 +265,7 @@ export default function Home() {
           </h2>
           <div className="text-lg text-gray-700 dark:text-gray-300 space-y-4">
             <p className="font-semibold text-xl text-blue-600 dark:text-blue-400">
-              "코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다."
+              '코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다.'
             </p>
             <p>
               Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
