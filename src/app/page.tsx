@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Recent Blog Posts Section - Hero 바로 아래로 이동 */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <section className="py-7 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -256,7 +256,7 @@ export default function Home() {
             </p>
             <p>
               Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
-              PG 및 재정산 시스템을 설계부터 운영까지 전 과정에 걸�쳐 주도적으로 참여해왔습니다.
+              PG 및 재정산 시스템을 설계부터 운영까지 전 과정에 걸쳐 주도적으로 참여해왔습니다.
             </p>
             <p>
               서비스의 구조적 안정성과 속도를 개선하기 위해 실행 계획 분석, 인덱스 최적화, 쿼리 리팩토링 등
@@ -270,7 +270,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section 
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
@@ -294,7 +294,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
