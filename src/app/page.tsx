@@ -2,10 +2,20 @@
 
 import { useState, useEffect } from 'react';
 
+interface BlogPost {
+  title: string;
+  pubDate: string;
+  link: string;
+  description: string;
+  thumbnail?: string;
+}  
+
 export default function Home() {
+
   const [darkMode, setDarkMode] = useState(false);
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     // 다크모드 설정 불러오기
