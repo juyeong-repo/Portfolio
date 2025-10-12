@@ -265,7 +265,7 @@ export default function Home() {
           </h2>
           <div className="text-lg text-gray-700 dark:text-gray-300 space-y-4">
             <p className="font-semibold text-xl text-blue-600 dark:text-blue-400">
-              '코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다.'
+              코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다.
             </p>
             <p>
               Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
@@ -553,10 +553,57 @@ export default function Home() {
         </div>
       </section>
 
+  {/* Language & Interpretation Section */}
+      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
+            Language Skills
+          </h2>
+          
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  영어
+                </h3>
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+                  비즈니스 회화 가능
+                </span>
+              </div>
+            </div>
+
+            {/* 통역 경험 */}
+            <div className="border-l-4 border-blue-600 pl-6">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  수원시청
+                </h3>
+                <span className="text-gray-600 dark:text-gray-400">2018.10</span>
+              </div>
+              <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                수원시 FTA 권역개척 수출상담회 영어 통역
+              </h4>
+            </div>
+
+            <div className="border-l-4 border-gray-400 pl-6">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  일산 KINTEX
+                </h3>
+                <span className="text-gray-600 dark:text-gray-400">2017.05</span>
+              </div>
+              <h4 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                일산 PLAYX4 수출상담회 비즈니스 영어 통역
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-8 px-8 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
         <p className="text-gray-600 dark:text-gray-400">
-          © 2025 Juyeong Park. All rights reserved.
+          © 2025 Juyeong Park All rights reserved.
         </p>
       </footer>
     </div>
