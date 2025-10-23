@@ -22,7 +22,7 @@ portfolio/
 ├─ package.json
 ├─ tsconfig.json
 └─ next.config.js
-
+```
 
 ## 🚀 사용 기술 스택
 
