@@ -3,20 +3,42 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-interface BlogPost {
-  title: string;
-  pubDate: string;
-  link: string;
-  description: string;
-  thumbnail?: string;
-}  
+// 블로그 시리즈 데이터 (즉시 로딩)
+const blogSeries = [
+  {
+    title: "Spring & Backend",
+    description: "Spring Boot, JPA, 성능 최적화 등 백엔드 개발 경험",
+    link: "https://juyeongpark.tistory.com/category/Spring",
+    count: 30
+  },
+  {
+    title: "Java",
+    description: "Java 기초부터 심화까지",
+    link: "https://juyeongpark.tistory.com/category/Java",
+    count: 25
+  },
+  {
+    title: "Database",
+    description: "MySQL, JPA, 쿼리 최적화",
+    link: "https://juyeongpark.tistory.com/category/Database",
+    count: 20
+  },
+  {
+    title: "Frontend",
+    description: "React, Next.js, TypeScript",
+    link: "https://juyeongpark.tistory.com/category/Frontend",
+    count: 15
+  },
+  {
+    title: "개발 회고",
+    description: "프로젝트 회고 및 학습 정리",
+    link: "https://juyeongpark.tistory.com/category/회고",
+    count: 10
+  }
+];
 
 export default function Home() {
-
   const [darkMode, setDarkMode] = useState(false);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     // 다크모드 설정 불러오기
@@ -25,26 +47,7 @@ export default function Home() {
     if (savedMode) {
       document.documentElement.classList.add('dark');
     }
-
-    // 블로그 RSS 피드 가져오기
-    fetchBlogPosts();
   }, []);
-
-  const fetchBlogPosts = async () => {
-    try {
-      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://juyeongpark.tistory.com/rss');
-      const data = await response.json();
-      
-      if (data.status === 'ok') {
-        // 최신 글 5개만 가져오기
-        setBlogPosts(data.items.slice(0, 5));
-      }
-    } catch (error) {
-      console.error('블로그 글을 불러오는데 실패했습니다:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
@@ -78,278 +81,137 @@ export default function Home() {
         )}
       </button>
 
-      {/* Hero Section */}
-      <section className="flex items-center justify-center min-h-screen p-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
-        <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* 왼쪽: 프로필 */}
-          <div className="flex flex-col items-center">
-          <Image 
-            src="/profile.png" 
-            alt="프로필"
-            width={200}
-            height={200}
-            className="w-48 h-48 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-6"
-          />
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            박주영
-          </h1>
-                      <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Full Stack Developer
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/juyeong-repo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://juyeongpark.tistory.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition"
-              >
-                Blog
-              </a>
-            </div>
-          </div>
-
-          {/* 오른쪽: 자기소개 요약 */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              About Me
-            </h2>
-            <div className="space-y-4 text-gray-700 dark:text-gray-300">
-              <p className="leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자</strong>입니다. 
-                팀의 목표를 우선하며, 동료들과 적극적으로 소통하고 협업합니다.
-              </p>
-              <p className="leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">클린 코드</strong>를 추구합니다. 
-                6개월 후에도 이해하기 쉽고, 확장 가능한 구조를 설계합니다.
-              </p>
-              <p className="leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">성능 최적화</strong>에 진심입니다. 
-                쿼리 개선으로 응답속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화 등 
-                실질적인 개선 경험이 있습니다.
-              </p>
-              <p className="leading-relaxed">
-                <strong className="text-gray-900 dark:text-white">설계부터 운영까지</strong> 책임집니다. 
-                PG 시스템 전체 생명주기를 경험하며, 안정적인 서비스 운영 역량을 갖췄습니다.
-              </p>
-            </div>
+      {/* Hero Section - 프로필 + About Me + Blog 한 화면에 */}
+      <section className="py-12 px-8 lg:py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             
-            <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600">
-              <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">
-                TECH STACK
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Java</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Spring Boot</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">TypeScript</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">React</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">Next.js</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">NestJS</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">MySQL</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Recent Blog Posts Section - Hero 바로 아래로 이동 */}
-      <section className="py-7 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Recent Blog Posts
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              기술 블로그 <span className="text-blue-600 dark:text-blue-400 font-bold">120+ 글</span> 작성 | 꾸준한 학습과 공유
-            </p>
-          </div>
-          
-          {loading ? (
-            <div className="text-center text-gray-600 dark:text-gray-400 py-8">
-              블로그 글을 불러오는 중...
-            </div>
-          ) : blogPosts.length > 0 ? (
-            <div className="space-y-6">
-              {/* 최신글 하이라이트 */}
-              <a
-                href={blogPosts[0].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-200 dark:border-blue-900 group"
-              >
-                <div className="flex items-start gap-2 mb-3">
-                  <span className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
-                    최신글
-                  </span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {new Date(blogPosts[0].pubDate).toLocaleDateString('ko-KR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {blogPosts[0].title}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
-                  {blogPosts[0].description?.replace(/<[^>]*>/g, '').substring(0, 200)}...
-                </p>
-              </a>
-
-              {/* 최근 글 목록 */}
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-                  </svg>
-                  최근 작성 글
-                </h4>
-                <div className="space-y-3">
-                  {blogPosts.slice(1, 5).map((post, index) => (
-                    <a
-                      key={index}
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-4 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors group"
-                    >
-                      <span className="flex-shrink-0 w-8 h-8 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full flex items-center justify-center font-semibold text-sm">
-                        {index + 2}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <h5 className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                          {post.title}
-                        </h5>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                          {new Date(post.pubDate).toLocaleDateString('ko-KR')}
-                        </p>
-                      </div>
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
-                      </svg>
-                    </a>
-                  ))}
-                </div>
+            {/* 왼쪽: 프로필 (3칸) */}
+            <div className="lg:col-span-3 flex flex-col items-center justify-start">
+              <Image 
+                src="/profile.png" 
+                alt="프로필"
+                width={128}
+                height={128}
+                className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-3"
+              />
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center">
+                박주영
+              </h1>
+              <p className="text-base text-gray-600 dark:text-gray-300 mb-4 text-center">
+                Full Stack Developer
+              </p>
+              <div className="flex flex-col gap-2 w-full max-w-[180px]">
+                <a
+                  href="https://github.com/juyeong-repo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm"
+                >
+                  GitHub
+                </a>
                 <a
                   href="https://juyeongpark.tistory.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 block text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm"
                 >
-                  블로그에서 더 많은 글 보기 →
+                  Blog
                 </a>
               </div>
             </div>
-          ) : (
-            <div className="text-center text-gray-600 dark:text-gray-400 py-8">
-              블로그 글을 불러올 수 없습니다.
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* About Me Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            About Me
-          </h2>
-          <div className="text-lg text-gray-700 dark:text-gray-300 space-y-4">
-            <p className="font-semibold text-xl text-blue-600 dark:text-blue-400">
-              코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다.
-            </p>
-            <p>
-              Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
-              PG 및 재정산 시스템을 설계부터 운영까지 전 과정에 걸쳐 주도적으로 참여해왔습니다.
-            </p>
-            <p>
-              서비스의 구조적 안정성과 속도를 개선하기 위해 실행 계획 분석, 인덱스 최적화, 쿼리 리팩토링 등
-              다양한 방식으로 성능을 지속적으로 개선해왔으며, 실제로 수차례 눈에 띄는 성능 향상을 이끌어냈습니다.
-            </p>
-            <p>
-              업무 외 시간에도 꾸준히 CS, 시스템 설계, 자바, JPA 등 다양한 주제로 스터디를 주도하거나 참여하고,
-              기술 블로그 120편 이상을 작성하며 기록하고 공유하는 습관을 이어가고 있습니다.
-            </p>
-          </div>
-        </div>
-      </section>
+            {/* 오른쪽: About Me + Blog (9칸) */}
+            <div className="lg:col-span-9 space-y-6">
+              
+              {/* About Me */}
+              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  About Me
+                </h2>
+                <div className="space-y-2 text-xs lg:text-sm text-gray-700 dark:text-gray-300">
+                  <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자</strong>입니다. 
+                    팀의 목표를 우선하며, 동료들과 적극적으로 소통하고 협업합니다.
+                  </p>
+                  <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">클린 코드</strong>를 추구합니다. 
+                    6개월 후에도 이해하기 쉽고, 확장 가능한 구조를 설계합니다.
+                  </p>
+                  <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">성능 최적화</strong>에 진심입니다. 
+                    쿼리 개선으로 응답속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화 등 
+                    실질적인 개선 경험이 있습니다.
+                  </p>
+                  <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">설계부터 운영까지</strong> 책임집니다. 
+                    PG 시스템 전체 생명주기를 경험하며, 안정적인 서비스 운영 역량을 갖췄습니다.
+                  </p>
+                </div>
+                
+                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+                  <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">
+                    TECH STACK
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Java</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Spring Boot</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">TypeScript</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">React</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Next.js</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">NestJS</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">MySQL</span>
+                  </div>
+                </div>
+              </div>
 
-      {/* Contact Section 
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            About Me
-          </h2>
-          <div className="text-lg text-gray-700 dark:text-gray-300 space-y-4">
-            <p className="font-semibold text-xl text-blue-600 dark:text-blue-400">
-              "코드는 유기적이며, 개발은 팀워크입니다. 동료와 함께 고민하며 최선의 방향을 찾아가는 과정이 개발의 본질이라 생각합니다."
-            </p>
-            <p>
-              Java, Springboot, TypeScript, React, Next.js, NestJS, MySQL 등 다양한 스택을 기반으로
-              PG 및 재정산 시스템을 설계부터 운영까지 전 과정에 걸쳐 주도적으로 참여해왔습니다.
-            </p>
-            <p>
-              서비스의 구조적 안정성과 속도를 개선하기 위해 실행 계획 분석, 인덱스 최적화, 쿼리 리팩토링 등
-              다양한 방식으로 성능을 지속적으로 개선해왔으며, 실제로 수차례 눈에 띄는 성능 향상을 이끌어냈습니다.
-            </p>
-            <p>
-              업무 외 시간에도 꾸준히 CS, 시스템 설계, 자바, JPA 등 다양한 주제로 스터디를 주도하거나 참여하고,
-              기술 블로그 120편 이상을 작성하며 기록하고 공유하는 습관을 이어가고 있습니다.
-            </p>
-          </div>
-        </div>
-      </section> */}
+              {/* Blog */}
+              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
+                    Blog
+                  </h2>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    <span className="text-blue-600 dark:text-blue-400 font-bold">120+</span> 글
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  {blogSeries.map((series, index) => (
+                    <a
+                      key={index}
+                      href={series.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
+                    >
+                      <div className="flex justify-between items-center">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                            {series.title}
+                          </h3>
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5 truncate">
+                            {series.description}
+                          </p>
+                        </div>
+                        <span className="ml-2 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium whitespace-nowrap">
+                          {series.count}+
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                
+                <a
+                  href="https://juyeongpark.tistory.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 block text-center py-2 px-4 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium text-xs lg:text-sm"
+                >
+                  블로그 전체 보기 →
+                </a>
+              </div>
 
-      {/* Contact Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Contact
-          </h2>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <span className="font-semibold text-gray-900 dark:text-white w-24">Email</span>
-              <a
-                href="mailto:juyeong.park.tech@gmail.com"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                juyeong.park.tech@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="font-semibold text-gray-900 dark:text-white w-24">Phone</span>
-              <span className="text-gray-700 dark:text-gray-300">010-5407-6392</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="font-semibold text-gray-900 dark:text-white w-24">Blog</span>
-              <a
-                href="https://juyeongpark.tistory.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                juyeongpark.tistory.com
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="font-semibold text-gray-900 dark:text-white w-24">GitHub</span>
-              <a
-                href="https://github.com/juyeong-repo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                github.com/juyeong-repo
-              </a>
             </div>
           </div>
         </div>
@@ -427,9 +289,8 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Projects
           </h2>
-          
-          <div className="space-y-8">
-            {/* Show Me the Movie */}
+          <div className="grid gap-8">
+            {/* 영화 예매 프로젝트 */}
             <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors duration-300">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
