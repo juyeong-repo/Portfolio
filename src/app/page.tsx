@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-// 블로그 시리즈 데이터 (즉시 로딩)
-const blogSeries = [
+// Fallback 시리즈 데이터 (RSS 로딩 실패 시)
+const blogSeriesFallback = [
   {
     title: "Spring & Backend",
     description: "Spring Boot, JPA, 성능 최적화 등 백엔드 개발 경험",
@@ -37,8 +37,18 @@ const blogSeries = [
   }
 ];
 
+interface BlogPost {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+}
+
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogLoading, setBlogLoading] = useState(true);
+  const [blogError, setBlogError] = useState(false);
 
   useEffect(() => {
     // 다크모드 설정 불러오기
@@ -47,7 +57,67 @@ export default function Home() {
     if (savedMode) {
       document.documentElement.classList.add('dark');
     }
+
+    // RSS 피드 불러오기
+    fetchBlogPosts();
   }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      // 캐시 확인 (1시간 유효)
+      const cachedData = localStorage.getItem('blogPosts');
+      const cachedTime = localStorage.getItem('blogPostsTime');
+      const oneHour = 60 * 60 * 1000;
+
+      if (cachedData && cachedTime && Date.now() - Number(cachedTime) < oneHour) {
+        setBlogPosts(JSON.parse(cachedData));
+        setBlogLoading(false);
+        return;
+      }
+
+      // RSS 피드 가져오기
+      const response = await fetch('https://juyeongpark.tistory.com/rss');
+      if (!response.ok) throw new Error('RSS fetch failed');
+
+      const xmlText = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+      // RSS 아이템 파싱
+      const items = xmlDoc.querySelectorAll('item');
+      const posts: BlogPost[] = [];
+
+      items.forEach((item, index) => {
+        if (index < 5) { // 최신 5개만
+          const title = item.querySelector('title')?.textContent || '';
+          const link = item.querySelector('link')?.textContent || '';
+          const pubDate = item.querySelector('pubDate')?.textContent || '';
+          const description = item.querySelector('description')?.textContent || '';
+
+          // HTML 태그 제거 및 텍스트만 추출
+          const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 100);
+
+          posts.push({
+            title,
+            link,
+            pubDate: new Date(pubDate).toLocaleDateString('ko-KR'),
+            description: cleanDescription + (cleanDescription.length >= 100 ? '...' : '')
+          });
+        }
+      });
+
+      // 캐시에 저장
+      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      localStorage.setItem('blogPostsTime', String(Date.now()));
+
+      setBlogPosts(posts);
+      setBlogLoading(false);
+    } catch (error) {
+      console.error('Blog RSS fetch error:', error);
+      setBlogError(true);
+      setBlogLoading(false);
+    }
+  };
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
@@ -131,21 +201,27 @@ export default function Home() {
                 </h2>
                 <div className="space-y-2 text-xs lg:text-sm text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">기획부터 운영까지 전체를 책임지는 개발자</strong>입니다. 
+                    요구사항 분석, 설계, 개발, 배포, 운영의 전 과정을 주도하며 
+                    비즈니스 문제를 기술로 해결합니다.
+                  </p>
+                  <p className="leading-relaxed">
+                    <strong className="text-gray-900 dark:text-white">전체 스택에서 성능을 개선</strong>합니다.
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm ml-2">
+                    <li>DB/프로시저: 쿼리 재설계로 응답속도 70% 단축, 구조 개선</li>
+                    <li>API: 효율적인 엔드포인트 설계와 데이터 처리 최적화</li>
+                    <li>Frontend: 가상화로 렌더링 15배 개선, UI/UX 개선</li>
+                    <li>운영: 시스템 모니터링 및 안정적인 서비스 운영</li>
+                  </ul>
+                  <p className="leading-relaxed mt-2">
+                    <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다.</strong> 
+                    PG 시스템의 설계부터 운영까지 직접 참여하며, 
+                    운영팀 요청 90% 감소 등 측정 가능한 비즈니스 임팩트를 만듭니다.
+                  </p>
+                  <p className="leading-relaxed">
                     <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자</strong>입니다. 
-                    팀의 목표를 우선하며, 동료들과 적극적으로 소통하고 협업합니다.
-                  </p>
-                  <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">클린 코드</strong>를 추구합니다. 
-                    6개월 후에도 이해하기 쉽고, 확장 가능한 구조를 설계합니다.
-                  </p>
-                  <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">성능 최적화</strong>에 진심입니다. 
-                    쿼리 개선으로 응답속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화 등 
-                    실질적인 개선 경험이 있습니다.
-                  </p>
-                  <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">설계부터 운영까지</strong> 책임집니다. 
-                    PG 시스템 전체 생명주기를 경험하며, 안정적인 서비스 운영 역량을 갖췄습니다.
+                    클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다.
                   </p>
                 </div>
                 
@@ -166,43 +242,161 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              
+              {/* Skills Section */}
+              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Skills
+                </h2>
+                <div className="space-y-4">
+                  {/* Product Development */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base font-bold text-gray-900 dark:text-white">🎯</span>
+                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
+                        Product Development
+                      </h3>
+                    </div>
+                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
+                      <li>요구사항 분석 및 기술 설계</li>
+                      <li>데이터 모델링 및 스키마 설계</li>
+                      <li>프로젝트 전체 사이클 관리</li>
+                    </ul>
+                  </div>
+
+                  {/* Backend */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base font-bold text-gray-900 dark:text-white">⚙️</span>
+                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
+                        Backend
+                      </h3>
+                    </div>
+                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
+                      <li>NestJS, Node.js, Express</li>
+                      <li>MySQL, Stored Procedure, Query Optimization</li>
+                      <li>REST API Design</li>
+                      <li>AWS S3</li>
+                    </ul>
+                  </div>
+
+                  {/* Frontend */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base font-bold text-gray-900 dark:text-white">🎨</span>
+                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
+                        Frontend
+                      </h3>
+                    </div>
+                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
+                      <li>React, Next.js, TypeScript</li>
+                      <li>Performance Optimization (Virtualization, Memoization)</li>
+                      <li>React Query, State Management</li>
+                      <li>MUI, Tailwind CSS</li>
+                    </ul>
+                  </div>
+
+                  {/* DevOps & Operations */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base font-bold text-gray-900 dark:text-white">🚀</span>
+                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
+                        DevOps & Operations
+                      </h3>
+                    </div>
+                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
+                      <li>Vercel, AWS</li>
+                      <li>CI/CD</li>
+                      <li>System Monitoring</li>
+                      <li>Troubleshooting</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
               {/* Blog */}
               <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
-                    Blog
+                    Recent Blog Posts
                   </h2>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
                     <span className="text-blue-600 dark:text-blue-400 font-bold">120+</span> 글
                   </p>
                 </div>
                 
-                <div className="space-y-2">
-                  {blogSeries.map((series, index) => (
-                    <a
-                      key={index}
-                      href={series.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
-                    >
-                      <div className="flex justify-between items-center">
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                            {series.title}
-                          </h3>
-                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5 truncate">
-                            {series.description}
-                          </p>
-                        </div>
-                        <span className="ml-2 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium whitespace-nowrap">
-                          {series.count}+
-                        </span>
+                {/* 로딩 상태 */}
+                {blogLoading && (
+                  <div className="space-y-2">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <div key={i} className="p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg animate-pulse">
+                        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
+                        <div className="h-3 bg-gray-200 dark:bg-gray-600 rounded w-full"></div>
                       </div>
-                    </a>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* RSS 데이터 표시 */}
+                {!blogLoading && !blogError && blogPosts.length > 0 && (
+                  <div className="space-y-2">
+                    {blogPosts.map((post, index) => (
+                      <a
+                        key={index}
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
+                      >
+                        <div className="flex justify-between items-start gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                              {post.title}
+                            </h3>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                              {post.description}
+                            </p>
+                          </div>
+                          <span className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                            {post.pubDate}
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* 에러 시 Fallback - 시리즈 링크 표시 */}
+                {!blogLoading && (blogError || blogPosts.length === 0) && (
+                  <div className="space-y-2">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                      카테고리별 글 모음 →
+                    </p>
+                    {blogSeriesFallback.map((series, index) => (
+                      <a
+                        key={index}
+                        href={series.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                              {series.title}
+                            </h3>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5 truncate">
+                              {series.description}
+                            </p>
+                          </div>
+                          <span className="ml-2 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium whitespace-nowrap">
+                            {series.count}+
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
                 
                 <a
                   href="https://juyeongpark.tistory.com"
