@@ -3,40 +3,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-// Fallback 시리즈 데이터 (RSS 로딩 실패 시)
-const blogSeriesFallback = [
-  {
-    title: "Spring & Backend",
-    description: "Spring Boot, JPA, 성능 최적화 등 백엔드 개발 경험",
-    link: "https://juyeongpark.tistory.com/category/Spring",
-    count: 30
-  },
-  {
-    title: "Java",
-    description: "Java 기초부터 심화까지",
-    link: "https://juyeongpark.tistory.com/category/Java",
-    count: 25
-  },
-  {
-    title: "Database",
-    description: "MySQL, JPA, 쿼리 최적화",
-    link: "https://juyeongpark.tistory.com/category/Database",
-    count: 20
-  },
-  {
-    title: "Frontend",
-    description: "React, Next.js, TypeScript",
-    link: "https://juyeongpark.tistory.com/category/Frontend",
-    count: 15
-  },
-  {
-    title: "개발 회고",
-    description: "프로젝트 회고 및 학습 정리",
-    link: "https://juyeongpark.tistory.com/category/회고",
-    count: 10
-  }
-];
-
 interface BlogPost {
   title: string;
   link: string;
@@ -75,42 +41,21 @@ export default function Home() {
         return;
       }
 
-      // RSS 피드 가져오기
-      const response = await fetch('https://juyeongpark.tistory.com/rss');
-      if (!response.ok) throw new Error('RSS fetch failed');
+      // API Route를 통해 RSS 피드 가져오기
+      const response = await fetch('/api/blog');
+      if (!response.ok) throw new Error('API fetch failed');
 
-      const xmlText = await response.text();
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-
-      // RSS 아이템 파싱
-      const items = xmlDoc.querySelectorAll('item');
-      const posts: BlogPost[] = [];
-
-      items.forEach((item, index) => {
-        if (index < 5) { // 최신 5개만
-          const title = item.querySelector('title')?.textContent || '';
-          const link = item.querySelector('link')?.textContent || '';
-          const pubDate = item.querySelector('pubDate')?.textContent || '';
-          const description = item.querySelector('description')?.textContent || '';
-
-          // HTML 태그 제거 및 텍스트만 추출
-          const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 100);
-
-          posts.push({
-            title,
-            link,
-            pubDate: new Date(pubDate).toLocaleDateString('ko-KR'),
-            description: cleanDescription + (cleanDescription.length >= 100 ? '...' : '')
-          });
-        }
-      });
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
       // 캐시에 저장
-      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      localStorage.setItem('blogPosts', JSON.stringify(data.posts));
       localStorage.setItem('blogPostsTime', String(Date.now()));
 
-      setBlogPosts(posts);
+      setBlogPosts(data.posts);
       setBlogLoading(false);
     } catch (error) {
       console.error('Blog RSS fetch error:', error);
@@ -295,35 +240,20 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* 에러 시 Fallback - 시리즈 링크 표시 */}
+                {/* 에러 시 Fallback - 블로그로 이동 */}
                 {!blogLoading && (blogError || blogPosts.length === 0) && (
-                  <div className="space-y-2">
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">
-                      카테고리별 글 모음 →
+                  <div className="text-center py-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                      최신 글을 불러올 수 없습니다.
                     </p>
-                    {blogSeriesFallback.map((series, index) => (
-                      <a
-                        key={index}
-                        href={series.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
-                      >
-                        <div className="flex justify-between items-center">
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-xs lg:text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                              {series.title}
-                            </h3>
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5 truncate">
-                              {series.description}
-                            </p>
-                          </div>
-                          <span className="ml-2 px-2 py-0.5 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium whitespace-nowrap">
-                            {series.count}+
-                          </span>
-                        </div>
-                      </a>
-                    ))}
+                    <a
+                      href="https://juyeongpark.tistory.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium text-sm"
+                    >
+                      블로그 방문하기 →
+                    </a>
                   </div>
                 )}
                 
@@ -370,61 +300,61 @@ export default function Home() {
                 <li>기획, 개발, 테스트, 운영까지 전 과정에 주도적으로 참여</li>
               </ul>
               <div>
-  <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Skills</h5>
-  
-  <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
-    {/* Product Development */}
-    <div>
-      <h6 className="font-medium mb-2">🎯 Product Development</h6>
-      <div className="flex flex-wrap gap-2">
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
-      </div>
-    </div>
-    
-    {/* Backend */}
-    <div>
-      <h6 className="font-medium mb-2">⚙️ Backend</h6>
-      <div className="flex flex-wrap gap-2">
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Express</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Stored Procedure</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">REST API Design</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS S3</span>
-      </div>
-    </div>
-    
-    {/* Frontend */}
-    <div>
-      <h6 className="font-medium mb-2">🎨 Frontend</h6>
-      <div className="flex flex-wrap gap-2">
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Performance Optimization</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React Query</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MUI</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Tailwind CSS</span>
-      </div>
-    </div>
-    
-    {/* DevOps */}
-    <div>
-      <h6 className="font-medium mb-2">🚀 DevOps & Operations</h6>
-      <div className="flex flex-wrap gap-2">
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
-        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
-      </div>
-    </div>
-  </div>
-</div>
+                <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Skills</h5>
+                
+                <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
+                  {/* Product Development */}
+                  <div>
+                    <h6 className="font-medium mb-2">🎯 Product Development</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
+                    </div>
+                  </div>
+                  
+                  {/* Backend */}
+                  <div>
+                    <h6 className="font-medium mb-2">⚙️ Backend</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Express</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Stored Procedure</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">REST API Design</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS S3</span>
+                    </div>
+                  </div>
+                  
+                  {/* Frontend */}
+                  <div>
+                    <h6 className="font-medium mb-2">🎨 Frontend</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Performance Optimization</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React Query</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MUI</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Tailwind CSS</span>
+                    </div>
+                  </div>
+                  
+                  {/* DevOps */}
+                  <div>
+                    <h6 className="font-medium mb-2">🚀 DevOps & Operations</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
+                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* 코어닥스 */}
@@ -587,7 +517,7 @@ export default function Home() {
         </div>
       </section>
 
-  {/* Language & Interpretation Section */}
+      {/* Language & Interpretation Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
