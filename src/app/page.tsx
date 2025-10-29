@@ -242,77 +242,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
-              {/* Skills Section */}
-              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  Skills
-                </h2>
-                <div className="space-y-4">
-                  {/* Product Development */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-base font-bold text-gray-900 dark:text-white">🎯</span>
-                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
-                        Product Development
-                      </h3>
-                    </div>
-                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
-                      <li>요구사항 분석 및 기술 설계</li>
-                      <li>데이터 모델링 및 스키마 설계</li>
-                      <li>프로젝트 전체 사이클 관리</li>
-                    </ul>
-                  </div>
-
-                  {/* Backend */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-base font-bold text-gray-900 dark:text-white">⚙️</span>
-                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
-                        Backend
-                      </h3>
-                    </div>
-                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
-                      <li>NestJS, Node.js, Express</li>
-                      <li>MySQL, Stored Procedure, Query Optimization</li>
-                      <li>REST API Design</li>
-                      <li>AWS S3</li>
-                    </ul>
-                  </div>
-
-                  {/* Frontend */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-base font-bold text-gray-900 dark:text-white">🎨</span>
-                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
-                        Frontend
-                      </h3>
-                    </div>
-                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
-                      <li>React, Next.js, TypeScript</li>
-                      <li>Performance Optimization (Virtualization, Memoization)</li>
-                      <li>React Query, State Management</li>
-                      <li>MUI, Tailwind CSS</li>
-                    </ul>
-                  </div>
-
-                  {/* DevOps & Operations */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-base font-bold text-gray-900 dark:text-white">🚀</span>
-                      <h3 className="text-sm lg:text-base font-bold text-gray-900 dark:text-white">
-                        DevOps & Operations
-                      </h3>
-                    </div>
-                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm text-gray-700 dark:text-gray-300 ml-6">
-                      <li>Vercel, AWS</li>
-                      <li>CI/CD</li>
-                      <li>System Monitoring</li>
-                      <li>Troubleshooting</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
               {/* Blog */}
               <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
@@ -440,14 +369,62 @@ export default function Home() {
                 <li>Hybrid App 개발 (WebView 기반)</li>
                 <li>기획, 개발, 테스트, 운영까지 전 과정에 주도적으로 참여</li>
               </ul>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Node.js</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">NestJS</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">TypeScript</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Next.js</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">MySQL</span>
-              </div>
+              <div>
+  <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Skills</h5>
+  
+  <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
+    {/* Product Development */}
+    <div>
+      <h6 className="font-medium mb-2">🎯 Product Development</h6>
+      <div className="flex flex-wrap gap-2">
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
+      </div>
+    </div>
+    
+    {/* Backend */}
+    <div>
+      <h6 className="font-medium mb-2">⚙️ Backend</h6>
+      <div className="flex flex-wrap gap-2">
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Express</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Stored Procedure</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">REST API Design</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS S3</span>
+      </div>
+    </div>
+    
+    {/* Frontend */}
+    <div>
+      <h6 className="font-medium mb-2">🎨 Frontend</h6>
+      <div className="flex flex-wrap gap-2">
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Performance Optimization</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React Query</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MUI</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Tailwind CSS</span>
+      </div>
+    </div>
+    
+    {/* DevOps */}
+    <div>
+      <h6 className="font-medium mb-2">🚀 DevOps & Operations</h6>
+      <div className="flex flex-wrap gap-2">
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
+        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
 
             {/* 코어닥스 */}
