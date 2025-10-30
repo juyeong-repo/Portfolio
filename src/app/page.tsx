@@ -153,29 +153,39 @@ const fetchBlogPosts = async () => {
                 <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3">
                   About Me
                 </h2>
-                <div className="space-y-2 text-xs lg:text-sm text-gray-700 dark:text-gray-300">
+                <div className="space-y-3 text-xs lg:text-sm text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">기획부터 운영까지 전체를 책임지는 개발자</strong>입니다. 
+                    <strong className="text-gray-900 dark:text-white">기획부터 운영까지 전체 생명주기를 책임지는 풀스택 개발자</strong>입니다. 
                     요구사항 분석, 설계, 개발, 배포, 운영의 전 과정을 주도하며 
                     비즈니스 문제를 기술로 해결합니다.
                   </p>
+                  
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">전체 스택에서 성능을 개선</strong>합니다.
+                    <strong className="text-gray-900 dark:text-white">"개발자가 깊이 고민할수록 사용자는 더 편해진다"는 철학</strong>으로 개발합니다. 
+                    서비스 성능 향상을 위해 전 스택을 깊이 파고들며, 병목 구간을 근본적으로 해결합니다. 
+                    운영 중 발생하는 문제를 임시방편으로 넘기지 않고, 원인을 추적해 시스템적으로 개선합니다.
                   </p>
-                  <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm ml-2">
-                    <li>DB/프로시저: 쿼리 재설계로 응답속도 70% 단축, 구조 개선</li>
-                    <li>API: 효율적인 엔드포인트 설계와 데이터 처리 최적화</li>
-                    <li>Frontend: 가상화로 렌더링 15배 개선, UI/UX 개선</li>
-                    <li>운영: 시스템 모니터링 및 안정적인 서비스 운영</li>
-                  </ul>
-                  <p className="leading-relaxed mt-2">
+
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-2">스택 전반의 성능 개선 경험</p>
+                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm ml-2">
+                      <li><strong>DB/프로시저:</strong> 쿼리 재설계로 응답 속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화</li>
+                      <li><strong>API:</strong> 버저닝을 통한 지속적인 성능 개선 및 엔드포인트 구조 최적화</li>
+                      <li><strong>Frontend:</strong> 가상화로 렌더링 속도 15배 향상, 공통 컴포넌트 및 라이브러리 최적화</li>
+                      <li><strong>운영:</strong> 운영팀 정의 조건에 따른 이상 감지 시스템을 구축하고, Slack과 문자 알림으로 장애 즉시 대응</li>
+                    </ul>
+                  </div>
+
+                  <p className="leading-relaxed">
                     <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다.</strong> 
-                    PG 시스템의 설계부터 운영까지 직접 참여하며, 
-                    운영팀 요청 90% 감소 등 측정 가능한 비즈니스 임팩트를 만듭니다.
+                    PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다. 
+                    이를 통해 운영팀 요청을 90% 이상 감소시키는 등, 측정 가능한 비즈니스 임팩트를 만들어왔습니다.
                   </p>
+                  
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자</strong>입니다. 
-                    클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다.
+                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자를 지향합니다.</strong> 
+                    클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다. 
+                    명확한 커뮤니케이션과 책임감 있는 태도로 팀 전체의 생산성과 품질을 높이는 것을 목표로 합니다.
                   </p>
                 </div>
                 
@@ -184,15 +194,17 @@ const fetchBlogPosts = async () => {
                     TECH STACK
                   </h3>
                   <div className="flex flex-wrap gap-1.5">
-                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Java</span>
-                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Spring Boot</span>
-                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">JPA</span>
                     <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">TypeScript</span>
-                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">React</span>
-                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Next.js</span>
                     <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">NestJS</span>
                     <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">TypeORM</span>
                     <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">MySQL</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Oracle</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Node.js</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Java</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Spring Boot</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">JPA</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">React</span>
+                    <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">Next.js</span>
                   </div>
                 </div>
               </div>
