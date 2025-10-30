@@ -18,6 +18,7 @@ export async function GET() {
     const pubDateRegex = /<pubDate>(.*?)<\/pubDate>/g;
     const descRegex = /<description><!\[CDATA\[(.*?)\]\]><\/description>/g;
 
+  
     const titles = [...xmlText.matchAll(titleRegex)].slice(1, 6); // 채널 title 제외, 5개만
     const links = [...xmlText.matchAll(linkRegex)].slice(1, 6);
     const pubDates = [...xmlText.matchAll(pubDateRegex)].slice(0, 5);
