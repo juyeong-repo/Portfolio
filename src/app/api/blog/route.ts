@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server';
+import { parseString } from 'xml2js';
+import { promisify } from 'util';
+
+const parseXML = promisify(parseString);
 
 export async function GET() {
   try {
@@ -7,33 +11,25 @@ export async function GET() {
     });
 
     if (!response.ok) {
-      throw new Error('RSS fetch failed');
+      throw new Error(`RSS fetch failed: ${response.status}`);
     }
 
     const xmlText = await response.text();
+    const result: any = await parseXML(xmlText);
     
-    // XML 파싱
-    const titleRegex = /<title><!\[CDATA\[(.*?)\]\]><\/title>/g;
-    const linkRegex = /<link>(.*?)<\/link>/g;
-    const pubDateRegex = /<pubDate>(.*?)<\/pubDate>/g;
-    const descRegex = /<description><!\[CDATA\[(.*?)\]\]><\/description>/g;
-
-  
-    const titles = [...xmlText.matchAll(titleRegex)].slice(1, 6); // 채널 title 제외, 5개만
-    const links = [...xmlText.matchAll(linkRegex)].slice(1, 6);
-    const pubDates = [...xmlText.matchAll(pubDateRegex)].slice(0, 5);
-    const descriptions = [...xmlText.matchAll(descRegex)].slice(0, 5);
-
-    const posts = titles.map((title, index) => ({
-      title: title[1],
-      link: links[index][1],
-      pubDate: new Date(pubDates[index][1]).toLocaleDateString('ko-KR'),
-      description: descriptions[index][1].replace(/<[^>]*>/g, '').substring(0, 100),
+    const items = result.rss.channel[0].item.slice(0, 5).map((item: any) => ({
+      title: item.title[0],
+      link: item.link[0],
+      pubDate: new Date(item.pubDate[0]).toLocaleDateString('ko-KR'),
+      description: item.description[0].replace(/<[^>]*>/g, '').substring(0, 100),
     }));
 
-    return NextResponse.json({ posts });
+    return NextResponse.json({ posts: items });
   } catch (error) {
     console.error('Blog RSS fetch error:', error);
-    return NextResponse.json({ error: 'Failed to fetch blog posts' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to fetch blog posts' }, 
+      { status: 500 }
+    );
   }
 }

@@ -28,9 +28,10 @@ export default function Home() {
     fetchBlogPosts();
   }, []);
 
-  const fetchBlogPosts = async () => {
-    try {
-      // 캐시 확인 (1시간 유효)
+const fetchBlogPosts = async () => {
+  try {
+    // localStorage 안전하게 사용
+    if (typeof window !== 'undefined') {
       const cachedData = localStorage.getItem('blogPosts');
       const cachedTime = localStorage.getItem('blogPostsTime');
       const oneHour = 60 * 60 * 1000;
@@ -40,29 +41,37 @@ export default function Home() {
         setBlogLoading(false);
         return;
       }
+    }
 
-      // API Route를 통해 RSS 피드 가져오기
-      const response = await fetch('/api/blog');
-      if (!response.ok) throw new Error('API fetch failed');
+    // API Route를 통해 RSS 피드 가져오기
+    const response = await fetch('/api/blog');
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('API Error:', errorData);
+      throw new Error(errorData.details || 'API fetch failed');
+    }
 
-      const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error);
-      }
+    const data = await response.json();
+    
+    if (data.error) {
+      throw new Error(data.error);
+    }
 
-      // 캐시에 저장
+    // localStorage에 안전하게 저장
+    if (typeof window !== 'undefined') {
       localStorage.setItem('blogPosts', JSON.stringify(data.posts));
       localStorage.setItem('blogPostsTime', String(Date.now()));
-
-      setBlogPosts(data.posts);
-      setBlogLoading(false);
-    } catch (error) {
-      console.error('Blog RSS fetch error:', error);
-      setBlogError(true);
-      setBlogLoading(false);
     }
-  };
+
+    setBlogPosts(data.posts);
+    setBlogLoading(false);
+  } catch (error) {
+    console.error('Blog RSS fetch error:', error);
+    setBlogError(true);
+    setBlogLoading(false);
+  }
+};
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
