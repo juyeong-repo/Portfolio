@@ -203,7 +203,7 @@ const fetchBlogPosts = async () => {
                   </p>
                   
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">"개발자가 깊이 고민할수록 사용자는 더 편해진다"는 철학</strong>으로 개발합니다. 
+                    <strong className="text-gray-900 dark:text-white">"개발자가 깊이 고민할수록 사용자는 더 편해진다"는 철학</strong>으로 개발합니다. <br />
                     서비스 성능 향상을 위해 전 스택을 깊이 파고들며, 병목 구간을 근본적으로 해결합니다. 
                     운영 중 발생하는 문제를 임시방편으로 넘기지 않고, 원인을 추적해 시스템적으로 개선합니다.
                   </p>
@@ -220,7 +220,7 @@ const fetchBlogPosts = async () => {
 
                   <p className="leading-relaxed">
                     <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다.</strong> 
-                    PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다. 
+                    PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다. <br />
                     이를 통해 운영팀 요청을 90% 이상 감소시키는 등, 측정 가능한 비즈니스 임팩트를 만들어왔습니다.
                   </p>
                   
