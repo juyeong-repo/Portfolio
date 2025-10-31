@@ -110,7 +110,7 @@ const fetchBlogPosts = async () => {
         <div className="max-w-[1800px] mx-auto">
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             
-            {/* 왼쪽: 프로필 (3칸) */}
+{/* 왼쪽: 프로필 (3칸) */}
             <div className="lg:col-span-3 flex flex-col items-center justify-start">
               <Image 
                 src="/profile.png" 
@@ -125,13 +125,47 @@ const fetchBlogPosts = async () => {
               <p className="text-base text-gray-600 dark:text-gray-300 mb-4 text-center">
                 Full Stack Developer
               </p>
-              
-              <div className="flex flex-col gap-2 w-full max-w-[180px]">
+
+              {/* Contact Info - 강조된 디자인 */}
+              <div className="w-full max-w-[240px] space-y-3 mb-4">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">PHONE</span>
+                  </div>
+                  <a 
+                    href="tel:010-5407-6392"
+                    className="text-sm font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
+                  >
+                    010-5407-6392
+                  </a>
+                </div>
+
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">EMAIL</span>
+                  </div>
+                  <a 
+                    href="mailto:juyeong.park.tech@gmail.com"
+                    className="text-sm font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition break-all"
+                  >
+                    juyeong.park.tech@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex flex-col gap-2 w-full max-w-[240px]">
                 <a
                   href="https://github.com/juyeong-repo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm"
+                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
                 >
                   GitHub
                 </a>
@@ -139,15 +173,20 @@ const fetchBlogPosts = async () => {
                   href="https://juyeongpark.tistory.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm"
+                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
                 >
                   Blog
                 </a>
+                <a
+                  href="https://www.linkedin.com/in/juyeong-park"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
+                >
+                  LinkedIn
+                </a>
               </div>
-
-
             </div>
-
             {/* 오른쪽: About Me + Blog (9칸) */}
             <div className="lg:col-span-9 space-y-6">
               
@@ -164,7 +203,7 @@ const fetchBlogPosts = async () => {
                   </p>
                   
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">&ldquo;개발자가 깊이 고민할수록 사용자는 더 편해진다&rdquo;는 철학</strong>으로 개발합니다.
+                    <strong className="text-gray-900 dark:text-white">"개발자가 깊이 고민할수록 사용자는 더 편해진다"는 철학</strong>으로 개발합니다. 
                     서비스 성능 향상을 위해 전 스택을 깊이 파고들며, 병목 구간을 근본적으로 해결합니다. 
                     운영 중 발생하는 문제를 임시방편으로 넘기지 않고, 원인을 추적해 시스템적으로 개선합니다.
                   </p>
