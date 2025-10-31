@@ -358,10 +358,14 @@ const fetchBlogPosts = async () => {
               <div className="space-y-6">
                 {/* 주요 성과 */}
                 <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <span className="text-blue-600">💡</span>
-                    주요 성과
-                  </h5>
+                  <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-3 inline-block">
+                    <div className="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm font-bold text-gray-900 dark:text-white">주요 성과</span>
+                    </div>
+                  </div>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                     <li><strong>서비스 전체 쿼리 최적화</strong>로 응답속도 70% 단축 (3초 → 0.9초)</li>
                     <li>프로시저 구조 개선(1개 → 3개 분리) 및 조인 방식 변경으로 시스템 안정성 향상</li>
@@ -374,10 +378,14 @@ const fetchBlogPosts = async () => {
 
                 {/* 핵심 업무 */}
                 <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <span className="text-blue-600">🎯</span>
-                    핵심 업무
-                  </h5>
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-3 inline-block">
+                  <div className="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">핵심 업무</span>
+                  </div>
+                </div>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                     <li><strong>PG 시스템 풀스택 개발</strong>: 설계부터 운영까지 전 과정 참여</li>
                     <li><strong>성능 최적화</strong>: MySQL 쿼리 튜닝, 인덱스 설계, 프론트엔드 렌더링 및 메모리 최적화</li>
@@ -394,18 +402,29 @@ const fetchBlogPosts = async () => {
                   <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                     {/* Product Development */}
                     <div>
-                      <h6 className="font-medium mb-2">🎯 Product Development & Architecture</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                      </svg>
+                      <span>Product Development & Architecture</span>
+                    </h6>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
-                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
-                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기획-개발-배포 전 과정 주도</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 경험</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기획-개발-배포 전 과정 참여</span>
                       </div>
                     </div>
                     
                     {/* Backend */}
                     <div>
-                      <h6 className="font-medium mb-2">⚙️ Backend Engineering</h6>
+                      <h6 className="font-medium mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span>Backend Engineering</span>
+                      </h6>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
@@ -418,7 +437,12 @@ const fetchBlogPosts = async () => {
 
                     {/* Database */}
                     <div>
-                      <h6 className="font-medium mb-2">💾 Database & Optimization</h6>
+                      <h6 className="font-medium mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
+                        <span>Database & Optimization</span>
+                      </h6>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization (70% 성능 개선)</span>
@@ -431,7 +455,12 @@ const fetchBlogPosts = async () => {
                     
                     {/* Frontend */}
                     <div>
-                      <h6 className="font-medium mb-2">🎨 Frontend Development</h6>
+                      <h6 className="font-medium mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        </svg>
+                        <span>Frontend Development</span>
+                      </h6>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
@@ -447,7 +476,12 @@ const fetchBlogPosts = async () => {
                     
                     {/* DevOps */}
                     <div>
-                      <h6 className="font-medium mb-2">🚀 DevOps & Cloud</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                      </svg>
+                      <span>DevOps & Cloud</span>
+                    </h6>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
@@ -459,7 +493,12 @@ const fetchBlogPosts = async () => {
 
                     {/* Communication */}
                     <div>
-                      <h6 className="font-medium mb-2">🤝 Collaboration & Documentation</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <span>Collaboration & Documentation</span>
+                    </h6>
                       <div className="flex flex-wrap gap-2">
                         {/* <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기술 블로그 운영</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기술 문서화</span> */}
@@ -487,10 +526,14 @@ const fetchBlogPosts = async () => {
             <div className="space-y-6">
               {/* 주요 성과 */}
               <div>
-                <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                  <span className="text-gray-600">💡</span>
-                  주요 성과
-                </h5>
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-3 inline-block">
+                  <div className="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">주요 성과</span>
+                  </div>
+                </div>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                     <li><strong>거래내역 쿼리 최적화</strong>로 사용자 조회 속도 개선</li>
                     <li><strong>사용자 마이페이지·잔고조회·거래내역 API</strong> 설계 및 구현</li>
@@ -502,10 +545,14 @@ const fetchBlogPosts = async () => {
 
               {/* 핵심 업무 */}
               <div>
-                <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                  <span className="text-gray-600">🎯</span>
-                  핵심 업무
-                </h5>
+              <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-3 inline-block">
+                <div className="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                  <span className="text-sm font-bold text-gray-900 dark:text-white">핵심 업무</span>
+                </div>
+              </div>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
 
                   <li>
@@ -561,7 +608,13 @@ const fetchBlogPosts = async () => {
                 <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
                   {/* Backend */}
                   <div>
-                    <h6 className="font-medium mb-2">⚙️ Backend Engineering</h6>
+                  <h6 className="font-medium mb-2 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Backend Engineering</span>
+                  </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Java</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring Boot</span>
@@ -574,7 +627,12 @@ const fetchBlogPosts = async () => {
 
                   {/* Database */}
                   <div>
-                    <h6 className="font-medium mb-2">💾 Database & Optimization</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                      </svg>
+                      <span>Database & Optimization</span>
+                    </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">MariaDB</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Query Optimization</span>
@@ -585,7 +643,12 @@ const fetchBlogPosts = async () => {
 
                   {/* External Integration */}
                   <div>
-                    <h6 className="font-medium mb-2">🔗 External Integration</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                      <span>External Integration</span>
+                    </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">가상화폐 거래소 API 연동</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">실시간 데이터 동기화</span>
@@ -595,7 +658,12 @@ const fetchBlogPosts = async () => {
 
                   {/* Security & Data */}
                   <div>
-                    <h6 className="font-medium mb-2">🔐 Security & Data Processing</h6>
+                  <h6 className="font-medium mb-2 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span>Security & Data Processing</span>
+                  </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">데이터 암호화/복호화</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">개인정보 마스킹</span>
@@ -605,7 +673,12 @@ const fetchBlogPosts = async () => {
 
                   {/* Domain Knowledge */}
                   <div>
-                    <h6 className="font-medium mb-2">🎨 Domain Knowledge</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                      <span>Domain Knowledge</span>
+                    </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">NFT Platform</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Auction System</span>
@@ -616,7 +689,13 @@ const fetchBlogPosts = async () => {
 
                   {/* Tools */}
                   <div>
-                    <h6 className="font-medium mb-2">🛠️ Development Tools</h6>
+                    <h6 className="font-medium mb-2 flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <span>Development Tools</span>
+                    </h6>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Git</span>
                       <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Redmine</span>
@@ -829,7 +908,7 @@ const fetchBlogPosts = async () => {
           </div>
         </div>
       </section>
-      
+
       {/* Footer */}
       <footer className="py-8 px-8 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
         <p className="text-gray-600 dark:text-gray-400">
