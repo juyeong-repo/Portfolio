@@ -178,7 +178,7 @@ const fetchBlogPosts = async () => {
                   Blog
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/juyeong-park"
+                  href="https://www.linkedin.com/in/juyeong-park-877579206/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
