@@ -634,6 +634,94 @@ const fetchBlogPosts = async () => {
         </div>
       </section>
 
+
+    {/* Education & Language Section - 한 행으로 배치 */}
+    <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          {/* Education */}
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+              Education
+            </h2>
+            <div className="space-y-6">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  디지털컨버전스 기반 BackEnd중심<br />Framework 개발자 양성과정
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">비트캠프 | 2020.01 - 2020.07</p>
+              </div>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  블록체인 중급 개발 재직자 과정
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">서울 ICT 이노베이션 스퀘어 | 2022.05 - 2022.06</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Language Skills */}
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+              Language Skills
+            </h2>
+
+            <div className="space-y-6">
+              {/* 영어 실력 강조 */}
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    영어
+                  </h3>
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+                    비즈니스 수준
+                  </span>
+                </div>
+
+                {/* 영어 실력 상세 */}
+                <div className="space-y-3 text-gray-700 dark:text-gray-300">
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>업무 커뮤니케이션</strong>: 영어로 의사소통 및 영문 이메일 작성 가능</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>기술 이해</strong>: 영문 기술 문서 및 API 문서 독해 가능</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>통역 경험</strong>: 해외 클라이언트 대상 비즈니스 통역 수행</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 통역 경험 */}
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  통역 경력
+                </h4>
+                <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                  <div className="border-l-3 border-blue-600 pl-4">
+                    <p className="font-medium">수원시 FTA 권역개척 수출상담회</p>
+                    <p className="text-gray-600 dark:text-gray-400">수원시청 | 2018.10</p>
+                  </div>
+                  <div className="border-l-3 border-gray-400 pl-4">
+                    <p className="font-medium">일산 PLAYX4 수출상담회</p>
+                    <p className="text-gray-600 dark:text-gray-400">일산 KINTEX | 2017.05</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
       {/* Projects Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
@@ -741,92 +829,7 @@ const fetchBlogPosts = async () => {
           </div>
         </div>
       </section>
-
-    {/* Education & Language Section - 한 행으로 배치 */}
-    <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          {/* Education */}
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-              Education
-            </h2>
-            <div className="space-y-6">
-              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  디지털컨버전스 기반 BackEnd중심<br />Framework 개발자 양성과정
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">비트캠프 | 2020.01 - 2020.07</p>
-              </div>
-              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  블록체인 중급 개발 재직자 과정
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">서울 ICT 이노베이션 스퀘어 | 2022.05 - 2022.06</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Language Skills */}
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-              Language Skills
-            </h2>
-
-            <div className="space-y-6">
-              {/* 영어 실력 강조 */}
-              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    영어
-                  </h3>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                    비즈니스 수준
-                  </span>
-                </div>
-
-                {/* 영어 실력 상세 */}
-                <div className="space-y-3 text-gray-700 dark:text-gray-300">
-                  <div className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span><strong>업무 커뮤니케이션</strong>: 영어로 의사소통 및 영문 이메일 작성 가능</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span><strong>기술 이해</strong>: 영문 기술 문서 및 API 문서 독해 가능</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                    <span><strong>통역 경험</strong>: 해외 클라이언트 대상 비즈니스 통역 수행</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 통역 경험 */}
-              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  통역 경력
-                </h4>
-                <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                  <div className="border-l-3 border-blue-600 pl-4">
-                    <p className="font-medium">수원시 FTA 권역개척 수출상담회</p>
-                    <p className="text-gray-600 dark:text-gray-400">수원시청 | 2018.10</p>
-                  </div>
-                  <div className="border-l-3 border-gray-400 pl-4">
-                    <p className="font-medium">일산 PLAYX4 수출상담회</p>
-                    <p className="text-gray-600 dark:text-gray-400">일산 KINTEX | 2017.05</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-    </div>
-  </div>
-</section>
-
+      
       {/* Footer */}
       <footer className="py-8 px-8 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
         <p className="text-gray-600 dark:text-gray-400">
