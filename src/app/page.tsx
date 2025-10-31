@@ -107,7 +107,7 @@ const fetchBlogPosts = async () => {
 
       {/* Hero Section - 프로필 + About Me + Blog 한 화면에 */}
       <section className="py-12 px-8 lg:py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1800px] mx-auto">
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             
             {/* 왼쪽: 프로필 (3칸) */}
@@ -125,6 +125,7 @@ const fetchBlogPosts = async () => {
               <p className="text-base text-gray-600 dark:text-gray-300 mb-4 text-center">
                 Full Stack Developer
               </p>
+              
               <div className="flex flex-col gap-2 w-full max-w-[180px]">
                 <a
                   href="https://github.com/juyeong-repo"
@@ -143,6 +144,8 @@ const fetchBlogPosts = async () => {
                   Blog
                 </a>
               </div>
+
+
             </div>
 
             {/* 오른쪽: About Me + Blog (9칸) */}
@@ -295,7 +298,7 @@ const fetchBlogPosts = async () => {
 
       {/* Work Experience Section */}
       <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Work Experience
           </h2>
@@ -409,7 +412,7 @@ const fetchBlogPosts = async () => {
 
       {/* Projects Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Projects
           </h2>
@@ -517,7 +520,7 @@ const fetchBlogPosts = async () => {
 
       {/* Education Section */}
       <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
             Education
           </h2>
@@ -540,7 +543,7 @@ const fetchBlogPosts = async () => {
 
       {/* Language & Interpretation Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
             Language Skills
           </h2>
