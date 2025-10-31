@@ -164,7 +164,7 @@ const fetchBlogPosts = async () => {
                   </p>
                   
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">"개발자가 깊이 고민할수록 사용자는 더 편해진다"는 철학</strong>으로 개발합니다. 
+                    <strong className="text-gray-900 dark:text-white">&ldquo;개발자가 깊이 고민할수록 사용자는 더 편해진다&rdquo;는 철학</strong>으로 개발합니다.
                     서비스 성능 향상을 위해 전 스택을 깊이 파고들며, 병목 구간을 근본적으로 해결합니다. 
                     운영 중 발생하는 문제를 임시방편으로 넘기지 않고, 원인을 추적해 시스템적으로 개선합니다.
                   </p>
