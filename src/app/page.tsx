@@ -616,12 +616,12 @@ const fetchBlogPosts = async () => {
                     <span>Backend Engineering</span>
                   </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Java</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring Boot</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring MVC</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring Data JPA</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">MyBatis</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">REST API Design</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Java</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Spring Boot</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Spring MVC</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Spring Data JPA</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">MyBatis</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">REST API Design</span>
                     </div>
                   </div>
 
@@ -634,10 +634,10 @@ const fetchBlogPosts = async () => {
                       <span>Database & Optimization</span>
                     </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">MariaDB</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Query Optimization</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">JPA Query Tuning</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Paging & Sorting</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">MariaDB</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Query Optimization</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">JPA Query Tuning</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Paging & Sorting</span>
                     </div>
                   </div>
 
@@ -650,9 +650,9 @@ const fetchBlogPosts = async () => {
                       <span>External Integration</span>
                     </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">가상화폐 거래소 API 연동</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">실시간 데이터 동기화</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">환율 정보 처리</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">가상화폐 거래소 API 연동</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">실시간 데이터 동기화</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">환율 정보 처리</span>
                     </div>
                   </div>
 
@@ -665,9 +665,9 @@ const fetchBlogPosts = async () => {
                     <span>Security & Data Processing</span>
                   </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">데이터 암호화/복호화</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">개인정보 마스킹</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">파일 업로드</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">데이터 암호화/복호화</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">개인정보 마스킹</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">파일 업로드</span>
                     </div>
                   </div>
 
@@ -680,10 +680,10 @@ const fetchBlogPosts = async () => {
                       <span>Domain Knowledge</span>
                     </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">NFT Platform</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Auction System</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Digital Asset Management</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Cryptocurrency</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">NFT Platform</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Auction System</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Digital Asset Management</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Cryptocurrency</span>
                     </div>
                   </div>
 
@@ -697,11 +697,11 @@ const fetchBlogPosts = async () => {
                       <span>Development Tools</span>
                     </h6>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Git</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Redmine</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Notion</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">STS</span>
-                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Visual Studio Code</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Git</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Redmine</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Notion</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">STS</span>
+                      <span className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Visual Studio Code</span>
                     </div>
                   </div>
                 </div>
