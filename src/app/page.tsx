@@ -219,13 +219,13 @@ const fetchBlogPosts = async () => {
                   </div>
 
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다.</strong> 
+                    <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다. </strong> 
                     PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다. <br />
                     이를 통해 운영팀 요청을 90% 이상 감소시키는 등, 측정 가능한 비즈니스 임팩트를 만들어왔습니다.
                   </p>
                   
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자를 지향합니다.</strong> 
+                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자를 지향합니다. </strong> 
                     클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다. 
                     명확한 커뮤니케이션과 책임감 있는 태도로 팀 전체의 생산성과 품질을 높이는 것을 목표로 합니다.
                   </p>
@@ -528,7 +528,7 @@ const fetchBlogPosts = async () => {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Photogram
                 </h3>
-                <span className="text-gray-600 dark:text-gray-400">2023.02 - 진행 중</span>
+                <span className="text-gray-600 dark:text-gray-400">2023.02</span>
               </div>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 인스타그램 웹 애플리케이션을 클론하는 프로젝트로, 효율적인 구조 설계와 예외 처리에 초점을 맞춰 개발하고 있습니다.
