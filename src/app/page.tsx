@@ -352,99 +352,284 @@ const fetchBlogPosts = async () => {
                 <span className="text-gray-600 dark:text-gray-400">2023.11 - 재직 중</span>
               </div>
               <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4">
-                PG(결제대행) 시스템 개발 및 운영
+                PG(결제대행) 시스템 풀스택 개발자
               </h4>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                <li>PG(결제대행) 시스템의 전반적인 개발 및 유지보수 담당</li>
-                <li>가맹점/영업점 대상 정산 및 정기 보고 기능 개발</li>
-                <li>관리자 및 가맹점이 이용하는 웹 서비스의 기능 개선 및 버그 대응</li>
-                <li>결제 트랜잭션 처리 안정성을 높이기 위한 로직 개선 및 시스템 운영</li>
-                <li>Hybrid App 개발 (WebView 기반)</li>
-                <li>기획, 개발, 테스트, 운영까지 전 과정에 주도적으로 참여</li>
-              </ul>
-              <div>
-                <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Skills</h5>
-                
-                <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
-                  {/* Product Development */}
-                  <div>
-                    <h6 className="font-medium mb-2">🎯 Product Development</h6>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
-                    </div>
-                  </div>
+              
+              <div className="space-y-6">
+                {/* 주요 성과 */}
+                <div>
+                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                    <span className="text-blue-600">💡</span>
+                    주요 성과
+                  </h5>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    <li><strong>서비스 전체 쿼리 최적화</strong>로 응답속도 70% 단축 (3초 → 0.9초)</li>
+                    <li>프로시저 구조 개선(1개 → 3개 분리) 및 조인 방식 변경으로 시스템 안정성 향상</li>
+                    <li>가상화 기법 적용으로 <strong>대용량 데이터(27,000건) 렌더링 성능 15배 개선</strong> (3초 → 0.2초)</li>
+                    <li>DOM 노드 최적화로 메모리 사용량 95% 감소 (200MB → 10MB)</li>
+                    <li>가맹점/영업점 결제 및 정산 시스템 구축 전 과정(기획~배포) 참여</li>
+                    <li>운영 중 발생한 사용자 불편을 기술적으로 분석·해결하며 비즈니스 개선에 기여</li>
+                  </ul>
+                </div>
+
+                {/* 핵심 업무 */}
+                <div>
+                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                    <span className="text-blue-600">🎯</span>
+                    핵심 업무
+                  </h5>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    <li><strong>PG 시스템 풀스택 개발</strong>: 설계부터 운영까지 전 과정 참여</li>
+                    <li><strong>성능 최적화</strong>: MySQL 쿼리 튜닝, 인덱스 설계, 프론트엔드 렌더링 및 메모리 최적화</li>
+                    <li><strong>정산/ 결제 시스템 구축 참여</strong>: 가맹점/영업점 대상 결제, 정산, 정기 보고 기능 개발 참여</li>
+                    <li><strong>하이브리드 앱 개발</strong>: WebView 기반 모바일 앱 개발 및 플랫폼별 최적화</li>
+                    <li><strong>시스템 안정화</strong>: 장애 모니터링, Slack/문자 알림 기반 대응 체계 구축</li>
+                  </ul>
+                </div>
+
+                {/* 기술 스택 및 역량 */}
+                <div>
+                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3">Skills & Technical Competencies</h5>
                   
-                  {/* Backend */}
-                  <div>
-                    <h6 className="font-medium mb-2">⚙️ Backend</h6>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Express</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Stored Procedure</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">REST API Design</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS S3</span>
+                  <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
+                    {/* Product Development */}
+                    <div>
+                      <h6 className="font-medium mb-2">🎯 Product Development & Architecture</h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">요구사항 분석 및 기술 설계</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">데이터 모델링 및 스키마 설계</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">프로젝트 전체 사이클 관리</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기획-개발-배포 전 과정 주도</span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Frontend */}
-                  <div>
-                    <h6 className="font-medium mb-2">🎨 Frontend</h6>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Performance Optimization</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React Query</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MUI</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Tailwind CSS</span>
+                    
+                    {/* Backend */}
+                    <div>
+                      <h6 className="font-medium mb-2">⚙️ Backend Engineering</h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">NestJS</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Node.js</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Express</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">REST API Design</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Cron Job Scheduling</span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* DevOps */}
-                  <div>
-                    <h6 className="font-medium mb-2">🚀 DevOps & Operations</h6>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
-                      <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
+
+                    {/* Database */}
+                    <div>
+                      <h6 className="font-medium mb-2">💾 Database & Optimization</h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MySQL</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Query Optimization (70% 성능 개선)</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Stored Procedure</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Index Design</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">JOIN 최적화</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">대용량 데이터 처리</span>
+                      </div>
+                    </div>
+                    
+                    {/* Frontend */}
+                    <div>
+                      <h6 className="font-medium mb-2">🎨 Frontend Development</h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Next.js</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">TypeScript</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Performance Optimization (15배 개선)</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Virtualization (react-window)</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">React Query</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">MUI</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Tailwind CSS</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">ag-Grid</span>
+                      </div>
+                    </div>
+                    
+                    {/* DevOps */}
+                    <div>
+                      <h6 className="font-medium mb-2">🚀 DevOps & Cloud</h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Vercel</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">CI/CD</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS (S3, EC2)</span>
+                      </div>
+                    </div>
+
+                    {/* Communication */}
+                    <div>
+                      <h6 className="font-medium mb-2">🤝 Collaboration & Documentation</h6>
+                      <div className="flex flex-wrap gap-2">
+                        {/* <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기술 블로그 운영</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">기술 문서화</span> */}
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">업무 커뮤니케이션</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">고객 지원 (결제,정산 및 전체 시스템 오류 대응)</span> 
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 코어닥스 */}
-            <div className="border-l-4 border-gray-400 pl-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  코어닥스
-                </h3>
-                <span className="text-gray-600 dark:text-gray-400">2022.04 - 2022.12</span>
+          {/* 코어닥스 */}
+          <div className="border-l-4 border-gray-400 pl-6">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                코어닥스
+              </h3>
+              <span className="text-gray-600 dark:text-gray-400">2022.04 - 2022.12</span>
+            </div>
+            <h4 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-4">
+              NFT 플랫폼 백엔드 개발자
+            </h4>
+
+            <div className="space-y-6">
+              {/* 주요 성과 */}
+              <div>
+                <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <span className="text-gray-600">💡</span>
+                  주요 성과
+                </h5>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    <li><strong>거래내역 쿼리 최적화</strong>로 사용자 조회 속도 개선</li>
+                    <li><strong>사용자 마이페이지·잔고조회·거래내역 API</strong> 설계 및 구현</li>
+                    <li><strong>가상화폐 거래소 연동 시스템</strong> 구축 (잔고 조회, 사용자 정보 동기화)</li>
+                    <li><strong>백오피스 시스템</strong> 개발 및 운영 참여</li>
+                    <li><strong>기획부터 배포·유지보수까지</strong> 전체 개발 사이클 수행</li>
+                  </ul>
               </div>
-              <h4 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-4">
-                NFT 플랫폼 서버 개발
-              </h4>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                <li>사용자 거래내역 (경매작품, 일반작품) API 개발</li>
-                <li>사용자 보유작품 조회 및 작품 정보제공 API 개발</li>
-                <li>사용자 프로필 (개인, 법인) 페이지 개발</li>
-                <li>사용자 거래내역 쿼리 성능개선</li>
-                <li>NFT 플랫폼 백오피스 API 개발 및 유지보수</li>
-              </ul>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Java</span>
-                <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Spring Boot</span>
-                <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">JPA</span>
-                <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">MariaDB</span>
+
+              {/* 핵심 업무 */}
+              <div>
+                <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                  <span className="text-gray-600">🎯</span>
+                  핵심 업무
+                </h5>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+
+                  <li>
+                    <strong>거래 시스템 API 개발</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>경매/일반 작품 거래내역 조회 (입찰, 낙찰, 진행, 유찰 상태별 필터링)</li>
+                      <li>결제 코인별 전일 종가 조회 및 원화 환산 기능</li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>작품 관리 시스템 개발</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>보유 작품 조회 (좋아요순·최신순·가격순 정렬 및 검색)</li>
+                      <li>관심 작품(좋아요) 기능 및 작품 정보 제공 API 구현</li>
+                      <li>효율적인 페이징 및 다중 정렬 조건 처리</li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>사용자 관리 시스템 구축</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>개인/법인 프로필 페이지 개발</li>
+                      <li>개인정보 암호화·복호화 및 마스킹 처리</li>
+                      <li>프로필·배경사진 업로드, 회원정보 변경 및 중복체크 기능 구현</li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>가상화폐 거래소 연동 시스템 개발</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>실시간 사용자 잔고 조회 API (거래소 통신)</li>
+                      <li>사용자 정보 동기화 및 DB 저장 로직 설계</li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>백오피스 시스템 운영</strong>
+                    <ul className="list-disc list-inside ml-6 mt-1 space-y-1 text-sm">
+                      <li>관리자 공지사항 API 개발 및 유지보수</li>
+                      <li>운영 효율화를 위한 관리 기능 개선</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              {/* 기술 스택 및 역량 */}
+              <div>
+                <h5 className="font-semibold text-gray-900 dark:text-white mb-3">
+                  Skills & Technical Competencies
+                </h5>
+
+                <div className="space-y-3 text-gray-700 dark:text-gray-300 text-sm">
+                  {/* Backend */}
+                  <div>
+                    <h6 className="font-medium mb-2">⚙️ Backend Engineering</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Java</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring Boot</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring MVC</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Spring Data JPA</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">MyBatis</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">REST API Design</span>
+                    </div>
+                  </div>
+
+                  {/* Database */}
+                  <div>
+                    <h6 className="font-medium mb-2">💾 Database & Optimization</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">MariaDB</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Query Optimization</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">JPA Query Tuning</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Paging & Sorting</span>
+                    </div>
+                  </div>
+
+                  {/* External Integration */}
+                  <div>
+                    <h6 className="font-medium mb-2">🔗 External Integration</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">가상화폐 거래소 API 연동</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">실시간 데이터 동기화</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">환율 정보 처리</span>
+                    </div>
+                  </div>
+
+                  {/* Security & Data */}
+                  <div>
+                    <h6 className="font-medium mb-2">🔐 Security & Data Processing</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">데이터 암호화/복호화</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">개인정보 마스킹</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">파일 업로드</span>
+                    </div>
+                  </div>
+
+                  {/* Domain Knowledge */}
+                  <div>
+                    <h6 className="font-medium mb-2">🎨 Domain Knowledge</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">NFT Platform</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Auction System</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Digital Asset Management</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Cryptocurrency</span>
+                    </div>
+                  </div>
+
+                  {/* Tools */}
+                  <div>
+                    <h6 className="font-medium mb-2">🛠️ Development Tools</h6>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Git</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Redmine</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Notion</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">STS</span>
+                      <span className="px-2 py-1 bg-gray-50 dark:bg-gray-700/30 rounded text-xs">Visual Studio Code</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+
           </div>
         </div>
       </section>
@@ -557,75 +742,90 @@ const fetchBlogPosts = async () => {
         </div>
       </section>
 
-      {/* Education Section */}
-      <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
-            Education
-          </h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                디지털컨버전스 기반 BackEnd중심, Framework 개발자 양성과정
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">비트캠프 | 2020.01 - 2020.07</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                블록체인 중급 개발 재직자 과정
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">서울 ICT 이노베이션 스퀘어 | 2022.05 - 2022.06</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Language & Interpretation Section */}
-      <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-12">
-            Language Skills
-          </h2>
+    {/* Education & Language Section - 한 행으로 배치 */}
+    <section className="py-20 px-8 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
-          <div className="space-y-8">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  영어
+          {/* Education */}
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+              Education
+            </h2>
+            <div className="space-y-6">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  디지털컨버전스 기반 BackEnd중심<br />Framework 개발자 양성과정
                 </h3>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                  비즈니스 회화 가능
-                </span>
+                <p className="text-gray-600 dark:text-gray-400">비트캠프 | 2020.01 - 2020.07</p>
               </div>
-            </div>
-
-            {/* 통역 경험 */}
-            <div className="border-l-4 border-blue-600 pl-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  수원시청
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  블록체인 중급 개발 재직자 과정
                 </h3>
-                <span className="text-gray-600 dark:text-gray-400">2018.10</span>
+                <p className="text-gray-600 dark:text-gray-400">서울 ICT 이노베이션 스퀘어 | 2022.05 - 2022.06</p>
               </div>
-              <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                수원시 FTA 권역개척 수출상담회 영어 통역
-              </h4>
-            </div>
-
-            <div className="border-l-4 border-gray-400 pl-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  일산 KINTEX
-                </h3>
-                <span className="text-gray-600 dark:text-gray-400">2017.05</span>
-              </div>
-              <h4 className="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">
-                일산 PLAYX4 수출상담회 비즈니스 영어 통역
-              </h4>
             </div>
           </div>
-        </div>
-      </section>
+
+          {/* Language Skills */}
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+              Language Skills
+            </h2>
+
+            <div className="space-y-6">
+              {/* 영어 실력 강조 */}
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    영어
+                  </h3>
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+                    비즈니스 수준
+                  </span>
+                </div>
+
+                {/* 영어 실력 상세 */}
+                <div className="space-y-3 text-gray-700 dark:text-gray-300">
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>업무 커뮤니케이션</strong>: 영어로 의사소통 및 영문 이메일 작성 가능</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>기술 이해</strong>: 영문 기술 문서 및 API 문서 독해 가능</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                    <span><strong>통역 경험</strong>: 해외 클라이언트 대상 비즈니스 통역 수행</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 통역 경험 */}
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  통역 경력
+                </h4>
+                <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                  <div className="border-l-3 border-blue-600 pl-4">
+                    <p className="font-medium">수원시 FTA 권역개척 수출상담회</p>
+                    <p className="text-gray-600 dark:text-gray-400">수원시청 | 2018.10</p>
+                  </div>
+                  <div className="border-l-3 border-gray-400 pl-4">
+                    <p className="font-medium">일산 PLAYX4 수출상담회</p>
+                    <p className="text-gray-600 dark:text-gray-400">일산 KINTEX | 2017.05</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+</section>
 
       {/* Footer */}
       <footer className="py-8 px-8 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
