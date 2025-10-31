@@ -4,24 +4,6 @@ import { promisify } from 'util';
 
 const parseXML = promisify(parseString);
 
-// RSS 피드의 타입 정의
-interface RSSItem {
-  title: string[];
-  link: string[];
-  pubDate: string[];
-  description: string[];
-}
-
-interface RSSChannel {
-  item: RSSItem[];
-}
-
-interface RSSResult {
-  rss: {
-    channel: RSSChannel[];
-  };
-}
-
 interface BlogPost {
   title: string;
   link: string;
@@ -40,11 +22,11 @@ export async function GET() {
     }
 
     const xmlText = await response.text();
-    // any 대신 RSSResult 타입 사용
-    const result = await parseXML(xmlText) as RSSResult;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await parseXML(xmlText);
     
-    // any 대신 RSSItem 타입 사용
-    const items: BlogPost[] = result.rss.channel[0].item.slice(0, 5).map((item: RSSItem) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const items: BlogPost[] = result.rss.channel[0].item.slice(0, 5).map((item: any) => ({
       title: item.title[0],
       link: item.link[0],
       pubDate: new Date(item.pubDate[0]).toLocaleDateString('ko-KR'),
@@ -55,7 +37,10 @@ export async function GET() {
   } catch (error) {
     console.error('Blog RSS fetch error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch blog posts', details: error instanceof Error ? error.message : 'Unknown error' }, 
+      { 
+        error: 'Failed to fetch blog posts', 
+        details: error instanceof Error ? error.message : 'Unknown error' 
+      }, 
       { status: 500 }
     );
   }
