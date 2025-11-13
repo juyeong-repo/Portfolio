@@ -23,3 +23,33 @@ body {
 .dark {
   color-scheme: dark;
 }
+
+
+@media print {
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  /* 다크모드 강제 해제 */
+  .dark, .dark * {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* 네비게이션, 다크모드 토글 버튼 등 숨기기 */
+  nav, footer, button, .no-print {
+    display: none !important;
+  }
+
+  /* 섹션별 페이지 나누기 방지 */
+  section, div {
+    page-break-inside: avoid;
+  }
+
+  /* 여백 조정 */
+  @page {
+    margin: 0;
+  }
+}
