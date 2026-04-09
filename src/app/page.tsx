@@ -204,6 +204,7 @@ const fetchBlogPosts = async () => {
                   <p className="leading-relaxed">
                     <strong className="text-gray-900 dark:text-white">보안이 중요한 금융/결제 시스템에서 대용량 데이터 처리와 성능 최적화를 수행해온 백엔드 중심 개발자</strong>입니다.
                     요구사항 분석, 설계, 개발, 배포, 운영의 전 과정을 주도하며 비즈니스 문제를 기술로 해결합니다.
+                    결제·금융 도메인에 강점을 두고 있으며, <strong className="text-gray-900 dark:text-white">일반 웹 서비스 전반(API 설계, 사용자 인증, 관리자 시스템, 모바일 웹)도 처음부터 끝까지 독립적으로 개발 가능</strong>합니다.
                   </p>
 
                   <p className="leading-relaxed">
