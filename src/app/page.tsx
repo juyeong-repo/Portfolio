@@ -111,106 +111,109 @@ const fetchBlogPosts = async () => {
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             
 {/* 왼쪽: 프로필 (3칸) */}
-            <div className="lg:col-span-3 flex flex-col items-center justify-start">
-              <Image 
-                src="/profile.png" 
-                alt="프로필"
-                width={192}
-                height={192}
-                className="w-48 h-48 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-3"
-              />
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center">
-                박주영
-              </h1>
-              <p className="text-base text-gray-600 dark:text-gray-300 mb-4 text-center">
-                Full Stack Developer
-              </p>
+            <div className="lg:col-span-3">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-600 overflow-hidden">
+                {/* 프로필 사진 - 가로형 직사각 */}
+                <div className="w-full aspect-[4/3] relative">
+                  <Image
+                    src="/profile.png"
+                    alt="프로필"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-              {/* Contact Info - 강조된 디자인 */}
-              <div className="w-full max-w-[240px] space-y-3 mb-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {/* 이름 + 직함 */}
+                <div className="px-5 pt-4 pb-3 border-b border-slate-100 dark:border-slate-700">
+                  <h1 className="text-xl font-bold text-gray-900 dark:text-white">박주영</h1>
+                  <p className="text-xs text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
+                    Backend Developer
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    Data · Performance · Security
+                  </p>
+                </div>
+
+                {/* Contact */}
+                <div className="px-5 py-3 space-y-2.5 border-b border-slate-100 dark:border-slate-700">
+                  <div className="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">PHONE</span>
+                    <a href="tel:010-5407-6392" className="text-xs text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                      010-5407-6392
+                    </a>
                   </div>
-                  <a 
-                    href="tel:010-5407-6392"
-                    className="text-sm font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
-                  >
-                    010-5407-6392
-                  </a>
-                </div>
-
-                <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex items-center gap-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">EMAIL</span>
+                    <a href="mailto:juyeong.park.tech@gmail.com" className="text-xs text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition break-all">
+                      juyeong.park.tech@gmail.com
+                    </a>
                   </div>
-                  <a 
-                    href="mailto:juyeong.park.tech@gmail.com"
-                    className="text-sm font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition break-all"
+                </div>
+
+                {/* Social Links */}
+                <div className="px-5 py-3 flex flex-col gap-2">
+                  <a
+                    href="https://github.com/juyeong-repo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 text-xs font-medium text-gray-700 dark:text-gray-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
                   >
-                    juyeong.park.tech@gmail.com
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
+                    GitHub
+                  </a>
+                  <a
+                    href="https://juyeongpark.tistory.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 text-xs font-medium text-gray-700 dark:text-gray-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                    Blog
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/juyeong-park-877579206/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 text-xs font-medium text-gray-700 dark:text-gray-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                  >
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
                   </a>
                 </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="flex flex-col gap-2 w-full max-w-[240px]">
-                <a
-                  href="https://github.com/juyeong-repo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://juyeongpark.tistory.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
-                >
-                  Blog
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/juyeong-park-877579206/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition text-center text-sm font-medium"
-                >
-                  LinkedIn
-                </a>
               </div>
             </div>
             {/* 오른쪽: About Me + Blog (9칸) */}
             <div className="lg:col-span-9 space-y-6">
               
               {/* About Me */}
-              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-slate-200 dark:border-slate-600 border-t-4 border-t-indigo-800 dark:border-t-indigo-400 transition-colors duration-300">
+                <h2 className="text-xl lg:text-2xl font-bold text-blue-700 dark:text-blue-300 mb-3">
                   About Me
                 </h2>
-                <div className="space-y-3 text-xs lg:text-sm text-gray-700 dark:text-gray-300">
+                <div className="space-y-3 text-sm lg:text-base text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">기획부터 운영까지 전체 생명주기를 책임지는 풀스택 개발자</strong>입니다. 
-                    요구사항 분석, 설계, 개발, 배포, 운영의 전 과정을 주도하며 
-                    비즈니스 문제를 기술로 해결합니다.
+                    <strong className="text-gray-900 dark:text-white">보안이 중요한 금융/결제 시스템에서 대용량 데이터 처리와 성능 최적화를 수행해온 백엔드 중심 개발자</strong>입니다.
+                    요구사항 분석, 설계, 개발, 배포, 운영의 전 과정을 주도하며 비즈니스 문제를 기술로 해결합니다.
                   </p>
-                  
+
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">&ldquo;개발자가 깊이 고민할수록 사용자는 더 편해진다&rdquo;는 철학</strong>으로 개발합니다. <br />
-                    서비스 성능 향상을 위해 전 스택을 깊이 파고들며, 병목 구간을 근본적으로 해결합니다. 
-                    운영 중 발생하는 문제를 임시방편으로 넘기지 않고, 원인을 추적해 시스템적으로 개선합니다.
+                    <strong className="text-gray-900 dark:text-white">&ldquo;개발자가 깊이 고민할수록 사용자는 더 편해진다&rdquo;는 철학</strong>으로 개발합니다.<br />
+                    결제 및 정산 시스템을 개발하며 <strong className="text-gray-900 dark:text-white">개인정보 보호, 데이터 마스킹, 접근 제어</strong> 등 보안 요구사항을 반영한 시스템을 구축해왔습니다.
                   </p>
 
                   <div>
                     <p className="font-semibold text-gray-900 dark:text-white mb-2">스택 전반의 성능 개선 경험</p>
-                    <ul className="list-disc list-inside space-y-1 text-xs lg:text-sm ml-2">
+                    <ul className="list-disc list-inside space-y-1 text-sm lg:text-base ml-2">
                       <li><strong>DB/프로시저:</strong> 쿼리 재설계로 응답 속도 70% 단축, 인덱스 설계로 대용량 데이터 처리 효율화</li>
                       <li><strong>API:</strong> 버저닝을 통한 지속적인 성능 개선 및 엔드포인트 구조 최적화</li>
                       <li><strong>Frontend:</strong> 가상화로 렌더링 속도 15배 향상, 공통 컴포넌트 및 라이브러리 최적화</li>
@@ -219,16 +222,28 @@ const fetchBlogPosts = async () => {
                   </div>
 
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다. </strong> 
-                    PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다. <br />
+                    <strong className="text-gray-900 dark:text-white">주인의식을 가지고 일합니다. </strong>
+                    PG 시스템의 설계부터 운영까지 직접 참여하며, 연휴에도 즉시 대응 가능한 모니터링 체계를 마련했습니다.<br />
                     이를 통해 운영팀 요청을 90% 이상 감소시키는 등, 측정 가능한 비즈니스 임팩트를 만들어왔습니다.
                   </p>
-                  
+
                   <p className="leading-relaxed">
-                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자를 지향합니다. </strong> 
-                    클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다. 
-                    명확한 커뮤니케이션과 책임감 있는 태도로 팀 전체의 생산성과 품질을 높이는 것을 목표로 합니다.
+                    <strong className="text-gray-900 dark:text-white">함께 성장하는 개발자를 지향합니다. </strong>
+                    클린 코드를 추구하고, 팀과 적극적으로 소통하며 협업합니다.
+                    영어 통번역 전공을 바탕으로 기술 문서 이해 및 글로벌 커뮤니케이션이 가능합니다.
                   </p>
+                </div>
+
+                {/* Key Strengths */}
+                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+                  <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">KEY STRENGTHS</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium">Backend (Java, Spring, Node.js)</span>
+                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium">Large-scale Data Processing</span>
+                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium">Query Optimization</span>
+                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium">Security-aware Development</span>
+                    <span className="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-medium">System Monitoring & Troubleshooting</span>
+                  </div>
                 </div>
                 
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
@@ -252,23 +267,23 @@ const fetchBlogPosts = async () => {
               </div>
 
               {/* Blog */}
-              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+              <div className="bg-white dark:bg-gray-800 p-5 lg:p-6 rounded-xl shadow-lg border border-slate-200 dark:border-slate-600 border-t-4 border-t-indigo-800 dark:border-t-indigo-400 transition-colors duration-300">
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="text-xl lg:text-2xl font-bold text-blue-700 dark:text-blue-300">
                     Recent Blog Posts
                   </h2>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
                     <span className="text-blue-600 dark:text-blue-400 font-bold">120+</span> 글
                   </p>
                 </div>
-                
+
                 {/* 로딩 상태 */}
                 {blogLoading && (
                   <div className="space-y-2">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className="p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg animate-pulse">
-                        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-                        <div className="h-3 bg-gray-200 dark:bg-gray-600 rounded w-full"></div>
+                      <div key={i} className="p-3 bg-blue-50 dark:bg-gray-900 border border-blue-100 dark:border-gray-600 rounded-lg animate-pulse">
+                        <div className="h-4 bg-blue-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
+                        <div className="h-3 bg-blue-100 dark:bg-gray-600 rounded w-full"></div>
                       </div>
                     ))}
                   </div>
@@ -283,7 +298,7 @@ const fetchBlogPosts = async () => {
                         href={post.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-200 group"
+                        className="block p-3 bg-blue-50 dark:bg-gray-900 border border-blue-200 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-100 dark:hover:bg-gray-800 hover:shadow-md transition-all duration-200 group"
                       >
                         <div className="flex justify-between items-start gap-2">
                           <div className="flex-1 min-w-0">
@@ -294,7 +309,7 @@ const fetchBlogPosts = async () => {
                               {post.description}
                             </p>
                           </div>
-                          <span className="text-xs text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                          <span className="text-xs text-blue-400 dark:text-gray-500 whitespace-nowrap">
                             {post.pubDate}
                           </span>
                         </div>
@@ -392,6 +407,24 @@ const fetchBlogPosts = async () => {
                     <li><strong>정산/ 결제 시스템 구축 참여</strong>: 가맹점/영업점 대상 결제, 정산, 정기 보고 기능 개발 참여</li>
                     <li><strong>하이브리드 앱 개발</strong>: WebView 기반 모바일 앱 개발 및 플랫폼별 최적화</li>
                     <li><strong>시스템 안정화</strong>: 장애 모니터링, Slack/문자 알림 기반 대응 체계 구축</li>
+                    <li><strong>관측성(Observability) 도입</strong>: Prometheus·Loki·Grafana 기반 메트릭/로그 수집 및 대시보드 구축, Kubernetes 환경에서 AWS 인프라와 연동</li>
+                  </ul>
+                </div>
+
+                {/* Security Considerations */}
+                <div>
+                <div className="bg-indigo-50 dark:bg-indigo-900/20 border-2 border-indigo-200 dark:border-indigo-800 rounded-lg p-3 mb-3 inline-block">
+                  <div className="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">Security Considerations</span>
+                  </div>
+                </div>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>개인정보 및 결제 데이터 보호를 고려한 개발</li>
+                    <li>데이터 마스킹 및 접근 제어 기반 설계 적용</li>
+                    <li>로그 기반 이상 탐지 및 모니터링 시스템 구축</li>
                   </ul>
                 </div>
 
@@ -488,6 +521,28 @@ const fetchBlogPosts = async () => {
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">System Monitoring</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Troubleshooting</span>
                         <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">AWS (S3, EC2)</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Docker</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Kubernetes</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Linux</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Prometheus</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Loki</span>
+                        <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 rounded text-xs">Grafana</span>
+                      </div>
+                    </div>
+
+                    {/* Security */}
+                    <div>
+                      <h6 className="font-medium mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <span className="text-indigo-700 dark:text-indigo-300">Security</span>
+                      </h6>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded text-xs">데이터 암호화/복호화</span>
+                        <span className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded text-xs">개인정보 마스킹</span>
+                        <span className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded text-xs">접근 제어 설계</span>
+                        <span className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded text-xs">이상 탐지 모니터링</span>
                       </div>
                     </div>
 
@@ -800,6 +855,25 @@ const fetchBlogPosts = async () => {
 </section>
 
 
+
+      {/* Interest & Learning Section */}
+      {/* <section className="py-12 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="max-w-6xl mx-auto">
+          <div className="border border-slate-200 dark:border-slate-600 border-t-4 border-t-indigo-800 dark:border-t-indigo-400 rounded-xl p-6 bg-white dark:bg-gray-800 shadow-sm">
+            <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-4">Interest &amp; Learning</h2>
+            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li className="flex items-start gap-2">
+                <span className="text-indigo-500 mt-0.5">▸</span>
+                <span>Kafka 기반 이벤트 스트리밍 아키텍처 학습 중</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-indigo-500 mt-0.5">▸</span>
+                <span>대용량 로그 및 이벤트 처리 구조에 관심</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section> */}
 
       {/* Projects Section */}
       <section className="py-20 px-8 bg-white dark:bg-gray-900 transition-colors duration-300">
