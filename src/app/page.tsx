@@ -115,9 +115,9 @@ const fetchBlogPosts = async () => {
               <Image 
                 src="/profile.png" 
                 alt="프로필"
-                width={128}
-                height={128}
-                className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-3"
+                width={192}
+                height={192}
+                className="w-48 h-48 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700 shadow-lg mb-3"
               />
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center">
                 박주영
